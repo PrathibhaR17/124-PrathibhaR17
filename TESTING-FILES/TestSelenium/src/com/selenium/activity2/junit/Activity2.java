@@ -1,0 +1,40 @@
+ package com.selenium.activity2.junit;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import junit.framework.Assert;
+
+class Activity2 {
+	
+   private static WebDriver driver;
+   
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		System.setProperty("webdriver.chrome.driver","D:/Testing/chromedriver.exe");
+		driver = new ChromeDriver();
+		}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+	//	driver.close();
+	}
+
+	@Test
+	void test() {
+ driver.navigate().to("https://webapps.tekstac.com/Shopify/");
+		driver.findElement(By.id("firstname")).sendKeys("Rahul");
+		driver.findElement(By.id("lastname")).sendKeys("Dravid");
+		driver.findElement(By.id("username")).sendKeys("Rahhul Dravid");
+//		driver.findElement(By.id("selectcity")).click();
+//		driver.findElement(By.xpath("//option[contains(text(),'Chennai')]")).click();
+		driver.findElement(By.xpath("//body/form[1]/div[6]/input[1]")).click();
+        driver.findElement(By.id("pass")).sendKeys("pas123");
+        driver.findElement(By.id("reg")).click();
+	
+	}
+}
